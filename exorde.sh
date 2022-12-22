@@ -21,6 +21,7 @@ sleep 2
 PS3='Select an action: '
 options=(
 "Install"
+"Run a node"
 "Exit")
 select opt in "${options[@]}"
 do
@@ -57,14 +58,12 @@ cd /root
 
 sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
 
-docker run \
--d \
---restart unless-stopped \
---pull always \
---name $CONTAINER_NAME \
-exordelabs/exorde-cli \
--m $ETH_ADDRESS \
--l 3
+break
+;;
+
+"Run a node")
+
+docker run -d --restart unless-stopped --pull always --name $CONTAINER_NAME exordelabs/exorde-cli -m $ETH_ADDRESS -l 3
 
 break
 ;;
