@@ -33,10 +33,6 @@ echo "Install start"
 echo "============================================================"
 
 # set vars
-if [ ! $CONTAINER_NAME ]; then
-	read -p "Enter container name: " $CONTAINER_NAME
-	echo 'export CONTAINER_NAME='$CONTAINER_NAME >> $HOME/.bash_profile
-fi
 if [ ! $ETH_ADDRESS ]; then
 	read -p "Enter eth address: " $ETH_ADDRESS
 	echo 'export ETH_ADDRESS='$ETH_ADDRESS >> $HOME/.bash_profile
@@ -63,7 +59,7 @@ break
 
 "Run a node")
 
-docker run -d --restart unless-stopped --pull always --name $CONTAINER_NAME exordelabs/exorde-cli -m $ETH_ADDRESS -l 3
+docker run -d --restart unless-stopped --pull always --name ex1 exordelabs/exorde-cli -m $ETH_ADDRESS -l 3
 
 break
 ;;
